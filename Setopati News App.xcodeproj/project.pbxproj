@@ -12,6 +12,14 @@
 		B62667251998C9D900F65CDE /* DataBaseManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B62667201998C9D900F65CDE /* DataBaseManger.m */; };
 		B62667261998C9D900F65CDE /* DataBO.m in Sources */ = {isa = PBXBuildFile; fileRef = B62667221998C9D900F65CDE /* DataBO.m */; };
 		B62667271998C9D900F65CDE /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B62667241998C9D900F65CDE /* DataParser.m */; };
+		B64AD67219A50494002E0153 /* ArtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD67119A50494002E0153 /* ArtViewController.m */; };
+		B64AD67519A504A7002E0153 /* SportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD67419A504A7002E0153 /* SportsViewController.m */; };
+		B64AD67819A504DD002E0153 /* SpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD67719A504DD002E0153 /* SpecialViewController.m */; };
+		B64AD67B19A5053C002E0153 /* OpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD67A19A5053C002E0153 /* OpinionViewController.m */; };
+		B64AD67E19A5054F002E0153 /* BlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD67D19A5054F002E0153 /* BlogViewController.m */; };
+		B64AD68119A50570002E0153 /* AdvdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD68019A50570002E0153 /* AdvdViewController.m */; };
+		B64AD68419A50680002E0153 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD68319A50680002E0153 /* HomeViewController.m */; };
+		B64AD68619A50F56002E0153 /* DataSetopati.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B64AD68519A50F56002E0153 /* DataSetopati.sqlite */; };
 		B64D645A197D328A00BCF719 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64D6459197D328A00BCF719 /* Foundation.framework */; };
 		B64D645C197D328A00BCF719 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64D645B197D328A00BCF719 /* CoreGraphics.framework */; };
 		B64D645E197D328A00BCF719 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64D645D197D328A00BCF719 /* UIKit.framework */; };
@@ -31,10 +39,11 @@
 		B64D6495197D331800BCF719 /* Setopati.m in Sources */ = {isa = PBXBuildFile; fileRef = B64D6494197D331800BCF719 /* Setopati.m */; };
 		B64D64A5197D705900BCF719 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64D64A3197D705900BCF719 /* DetailsViewController.m */; };
 		B64D64A6197D705900BCF719 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64D64A4197D705900BCF719 /* DetailsViewController.xib */; };
+		B65B3E3A19A3524C004C8716 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65B3E3919A3524C004C8716 /* BusinessViewController.m */; };
+		B6AECE4A19A1E301009330DB /* SocietyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AECE4919A1E301009330DB /* SocietyViewController.m */; };
 		B6BCCA07199B45FF001F1D45 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6BCCA06199B45FF001F1D45 /* icon.png */; };
 		B6BCCA70199B4DBC001F1D45 /* PoliticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCCA6F199B4DBC001F1D45 /* PoliticsViewController.m */; };
 		B6BCCA76199B91B9001F1D45 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCCA75199B91B9001F1D45 /* NSDataAdditions.m */; };
-		B6BCCA7C199BF388001F1D45 /* Data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B6BCCA7B199BF388001F1D45 /* Data.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +65,21 @@
 		B62667221998C9D900F65CDE /* DataBO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBO.m; sourceTree = "<group>"; };
 		B62667231998C9D900F65CDE /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
 		B62667241998C9D900F65CDE /* DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
+		B64AD67019A50494002E0153 /* ArtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtViewController.h; sourceTree = "<group>"; };
+		B64AD67119A50494002E0153 /* ArtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtViewController.m; sourceTree = "<group>"; };
+		B64AD67319A504A7002E0153 /* SportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportsViewController.h; sourceTree = "<group>"; };
+		B64AD67419A504A7002E0153 /* SportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportsViewController.m; sourceTree = "<group>"; };
+		B64AD67619A504DD002E0153 /* SpecialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialViewController.h; sourceTree = "<group>"; };
+		B64AD67719A504DD002E0153 /* SpecialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialViewController.m; sourceTree = "<group>"; };
+		B64AD67919A5053C002E0153 /* OpinionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpinionViewController.h; sourceTree = "<group>"; };
+		B64AD67A19A5053C002E0153 /* OpinionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpinionViewController.m; sourceTree = "<group>"; };
+		B64AD67C19A5054F002E0153 /* BlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogViewController.h; sourceTree = "<group>"; };
+		B64AD67D19A5054F002E0153 /* BlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogViewController.m; sourceTree = "<group>"; };
+		B64AD67F19A50570002E0153 /* AdvdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvdViewController.h; sourceTree = "<group>"; };
+		B64AD68019A50570002E0153 /* AdvdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvdViewController.m; sourceTree = "<group>"; };
+		B64AD68219A50680002E0153 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B64AD68319A50680002E0153 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B64AD68519A50F56002E0153 /* DataSetopati.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DataSetopati.sqlite; sourceTree = "<group>"; };
 		B64D6456197D328A00BCF719 /* Setopati News App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Setopati News App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64D6459197D328A00BCF719 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B64D645B197D328A00BCF719 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,12 +106,15 @@
 		B64D64A2197D705900BCF719 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		B64D64A3197D705900BCF719 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		B64D64A4197D705900BCF719 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		B65B3E3819A3524C004C8716 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
+		B65B3E3919A3524C004C8716 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
+		B6AECE4819A1E301009330DB /* SocietyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocietyViewController.h; sourceTree = "<group>"; };
+		B6AECE4919A1E301009330DB /* SocietyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocietyViewController.m; sourceTree = "<group>"; };
 		B6BCCA06199B45FF001F1D45 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B6BCCA6E199B4DBC001F1D45 /* PoliticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliticsViewController.h; sourceTree = "<group>"; };
 		B6BCCA6F199B4DBC001F1D45 /* PoliticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliticsViewController.m; sourceTree = "<group>"; };
 		B6BCCA74199B91B9001F1D45 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		B6BCCA75199B91B9001F1D45 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
-		B6BCCA7B199BF388001F1D45 /* Data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Data.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +145,7 @@
 		B64D644D197D328A00BCF719 = {
 			isa = PBXGroup;
 			children = (
-				B6BCCA7B199BF388001F1D45 /* Data.sqlite */,
+				B64AD68519A50F56002E0153 /* DataSetopati.sqlite */,
 				B64D645F197D328A00BCF719 /* Setopati News App */,
 				B64D6481197D328B00BCF719 /* Setopati News AppTests */,
 				B64D6458197D328A00BCF719 /* Frameworks */,
@@ -154,10 +181,28 @@
 				B64D646E197D328A00BCF719 /* Main_iPad.storyboard */,
 				B64D6468197D328A00BCF719 /* AppDelegate.h */,
 				B64D6469197D328A00BCF719 /* AppDelegate.m */,
+				B64AD68219A50680002E0153 /* HomeViewController.h */,
+				B64AD68319A50680002E0153 /* HomeViewController.m */,
 				B64D6471197D328B00BCF719 /* ViewController.h */,
 				B64D6472197D328B00BCF719 /* ViewController.m */,
 				B6BCCA6E199B4DBC001F1D45 /* PoliticsViewController.h */,
 				B6BCCA6F199B4DBC001F1D45 /* PoliticsViewController.m */,
+				B6AECE4819A1E301009330DB /* SocietyViewController.h */,
+				B6AECE4919A1E301009330DB /* SocietyViewController.m */,
+				B65B3E3819A3524C004C8716 /* BusinessViewController.h */,
+				B65B3E3919A3524C004C8716 /* BusinessViewController.m */,
+				B64AD67019A50494002E0153 /* ArtViewController.h */,
+				B64AD67119A50494002E0153 /* ArtViewController.m */,
+				B64AD67319A504A7002E0153 /* SportsViewController.h */,
+				B64AD67419A504A7002E0153 /* SportsViewController.m */,
+				B64AD67619A504DD002E0153 /* SpecialViewController.h */,
+				B64AD67719A504DD002E0153 /* SpecialViewController.m */,
+				B64AD67919A5053C002E0153 /* OpinionViewController.h */,
+				B64AD67A19A5053C002E0153 /* OpinionViewController.m */,
+				B64AD67C19A5054F002E0153 /* BlogViewController.h */,
+				B64AD67D19A5054F002E0153 /* BlogViewController.m */,
+				B64AD67F19A50570002E0153 /* AdvdViewController.h */,
+				B64AD68019A50570002E0153 /* AdvdViewController.m */,
 				B64D64A2197D705900BCF719 /* DetailsViewController.h */,
 				B64D64A3197D705900BCF719 /* DetailsViewController.m */,
 				B64D64A4197D705900BCF719 /* DetailsViewController.xib */,
@@ -291,9 +336,9 @@
 				B64D6470197D328A00BCF719 /* Main_iPad.storyboard in Resources */,
 				B64D6475197D328B00BCF719 /* Images.xcassets in Resources */,
 				B64D646D197D328A00BCF719 /* Main_iPhone.storyboard in Resources */,
+				B64AD68619A50F56002E0153 /* DataSetopati.sqlite in Resources */,
 				B626671D1998C25B00F65CDE /* t1.png in Resources */,
 				B64D6464197D328A00BCF719 /* InfoPlist.strings in Resources */,
-				B6BCCA7C199BF388001F1D45 /* Data.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,13 +360,22 @@
 				B62667261998C9D900F65CDE /* DataBO.m in Sources */,
 				B64D6473197D328B00BCF719 /* ViewController.m in Sources */,
 				B64D646A197D328A00BCF719 /* AppDelegate.m in Sources */,
+				B64AD67819A504DD002E0153 /* SpecialViewController.m in Sources */,
+				B64AD67519A504A7002E0153 /* SportsViewController.m in Sources */,
 				B64D64A5197D705900BCF719 /* DetailsViewController.m in Sources */,
 				B64D6495197D331800BCF719 /* Setopati.m in Sources */,
 				B6BCCA70199B4DBC001F1D45 /* PoliticsViewController.m in Sources */,
+				B65B3E3A19A3524C004C8716 /* BusinessViewController.m in Sources */,
+				B64AD68119A50570002E0153 /* AdvdViewController.m in Sources */,
+				B6AECE4A19A1E301009330DB /* SocietyViewController.m in Sources */,
 				B6BCCA76199B91B9001F1D45 /* NSDataAdditions.m in Sources */,
+				B64AD67E19A5054F002E0153 /* BlogViewController.m in Sources */,
 				B62667251998C9D900F65CDE /* DataBaseManger.m in Sources */,
 				B62667271998C9D900F65CDE /* DataParser.m in Sources */,
+				B64AD67B19A5053C002E0153 /* OpinionViewController.m in Sources */,
 				B64D6466197D328A00BCF719 /* main.m in Sources */,
+				B64AD68419A50680002E0153 /* HomeViewController.m in Sources */,
+				B64AD67219A50494002E0153 /* ArtViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

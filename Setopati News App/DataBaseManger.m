@@ -30,11 +30,13 @@
     
     NSString *documentsDir = [arrPaths objectAtIndex:0];
     
-    NSString *str = [documentsDir stringByAppendingPathComponent:@"Data.sqlite"];
+    NSString *str = [documentsDir stringByAppendingPathComponent:@"DataSetopati.sqlite"];
     
     return str;
     
 }
+
+
 -(BOOL)addServiceToDataBase:(NSMutableArray *)arrData
 {
     
@@ -56,7 +58,7 @@
             NSInteger rowidentifier = -1;
       if(addStmt == nil)
             {
-        NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  politics(row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+        NSString *strValue = [NSString stringWithFormat:@"INSERT INTO politics(row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
                 const char *sql = [strValue UTF8String];
                 if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
                 {
@@ -159,7 +161,7 @@
             NSInteger rowidentifier = -1;
             if(addStmt == nil)
             {
-                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  society(row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+    NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  society(row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
                 const char *sql = [strValue UTF8String];
                 if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
                 {
@@ -344,6 +346,620 @@
     
     return returnValue;
 }
+-(BOOL)addServiceToDataBase3:(NSMutableArray *)arrData3
+{
+    
+    BOOL returnValue = YES;
+    sqlite3_stmt *addStmt = nil;
+    sqlite3 *dataBase = nil;
+    
+    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+    {
+        printf("\n Database Successfully Opened");
+    }
+    // Open the database. The database was prepared outside the application.
+    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        for (int i =0 ; i< arrData3.count-1; i++)
+        {
+            DataBO *objDetails = [arrData3 objectAtIndex:i ];
+            NSInteger rowidentifier = -1;
+            if(addStmt == nil)
+            {
+                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  art (row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+                const char *sql = [strValue UTF8String];
+                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
+                {
+                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
+                }
+            }
+            
+            if(rowidentifier == -1)
+            {
+                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(SQLITE_DONE != sqlite3_step(addStmt))
+                {
+                    returnValue = NO;
+                }
+                
+                sqlite3_reset(addStmt);
+            }
+            
+            objDetails = nil;
+        }
+    }
+    
+    if (addStmt)
+    {
+        sqlite3_finalize(addStmt);
+        addStmt = nil;
+    }
+    sqlite3_close(dataBase);
+    dataBase = nil;
+    
+    return returnValue;
+}
+-(BOOL)addServiceToDataBase4:(NSMutableArray *)arrData4
+{
+    
+    BOOL returnValue = YES;
+    sqlite3_stmt *addStmt = nil;
+    sqlite3 *dataBase = nil;
+    
+    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+    {
+        printf("\n Database Successfully Opened");
+    }
+    // Open the database. The database was prepared outside the application.
+    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        for (int i =0 ; i< arrData4.count-1; i++)
+        {
+            DataBO *objDetails = [arrData4 objectAtIndex:i ];
+            NSInteger rowidentifier = -1;
+            if(addStmt == nil)
+            {
+                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  sports (row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+                const char *sql = [strValue UTF8String];
+                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
+                {
+                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
+                }
+            }
+            
+            if(rowidentifier == -1)
+            {
+                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(SQLITE_DONE != sqlite3_step(addStmt))
+                {
+                    returnValue = NO;
+                }
+                
+                sqlite3_reset(addStmt);
+            }
+            
+            objDetails = nil;
+        }
+    }
+    
+    if (addStmt)
+    {
+        sqlite3_finalize(addStmt);
+        addStmt = nil;
+    }
+    sqlite3_close(dataBase);
+    dataBase = nil;
+    
+    return returnValue;
+}
+-(BOOL)addServiceToDataBase5:(NSMutableArray *)arrData5
+{
+    
+    BOOL returnValue = YES;
+    sqlite3_stmt *addStmt = nil;
+    sqlite3 *dataBase = nil;
+    
+    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+    {
+        printf("\n Database Successfully Opened");
+    }
+    // Open the database. The database was prepared outside the application.
+    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        for (int i =0 ; i< arrData5.count-1; i++)
+        {
+            DataBO *objDetails = [arrData5 objectAtIndex:i ];
+            NSInteger rowidentifier = -1;
+            if(addStmt == nil)
+            {
+                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  special (row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+                const char *sql = [strValue UTF8String];
+                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
+                {
+                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
+                }
+            }
+            
+            if(rowidentifier == -1)
+            {
+                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(SQLITE_DONE != sqlite3_step(addStmt))
+                {
+                    returnValue = NO;
+                }
+                
+                sqlite3_reset(addStmt);
+            }
+            
+            objDetails = nil;
+        }
+    }
+    
+    if (addStmt)
+    {
+        sqlite3_finalize(addStmt);
+        addStmt = nil;
+    }
+    sqlite3_close(dataBase);
+    dataBase = nil;
+    
+    return returnValue;
+}
+
+-(BOOL)addServiceToDataBase6:(NSMutableArray *)arrData6
+{
+    
+    BOOL returnValue = YES;
+    sqlite3_stmt *addStmt = nil;
+    sqlite3 *dataBase = nil;
+    
+    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+    {
+        printf("\n Database Successfully Opened");
+    }
+    // Open the database. The database was prepared outside the application.
+    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        for (int i =0 ; i< arrData6.count-1; i++)
+        {
+            DataBO *objDetails = [arrData6 objectAtIndex:i ];
+            NSInteger rowidentifier = -1;
+            if(addStmt == nil)
+            {
+                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  opinion (row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+                const char *sql = [strValue UTF8String];
+                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
+                {
+                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
+                }
+            }
+            
+            if(rowidentifier == -1)
+            {
+                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(SQLITE_DONE != sqlite3_step(addStmt))
+                {
+                    returnValue = NO;
+                }
+                
+                sqlite3_reset(addStmt);
+            }
+            
+            objDetails = nil;
+        }
+    }
+    
+    if (addStmt)
+    {
+        sqlite3_finalize(addStmt);
+        addStmt = nil;
+    }
+    sqlite3_close(dataBase);
+    dataBase = nil;
+    
+    return returnValue;
+}
+-(BOOL)addServiceToDataBase7:(NSMutableArray *)arrData7
+{
+    
+    BOOL returnValue = YES;
+    sqlite3_stmt *addStmt = nil;
+    sqlite3 *dataBase = nil;
+    
+    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+    {
+        printf("\n Database Successfully Opened");
+    }
+    // Open the database. The database was prepared outside the application.
+    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        for (int i =0 ; i< arrData7.count-1; i++)
+        {
+            DataBO *objDetails = [arrData7 objectAtIndex:i ];
+            NSInteger rowidentifier = -1;
+            if(addStmt == nil)
+            {
+                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  blog (row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+                const char *sql = [strValue UTF8String];
+                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
+                {
+                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
+                }
+            }
+            
+            if(rowidentifier == -1)
+            {
+                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(SQLITE_DONE != sqlite3_step(addStmt))
+                {
+                    returnValue = NO;
+                }
+                
+                sqlite3_reset(addStmt);
+            }
+            
+            objDetails = nil;
+        }
+    }
+    
+    if (addStmt)
+    {
+        sqlite3_finalize(addStmt);
+        addStmt = nil;
+    }
+    sqlite3_close(dataBase);
+    dataBase = nil;
+    
+    return returnValue;
+}
+-(BOOL)addServiceToDataBase8:(NSMutableArray *)arrData8
+{
+    
+    BOOL returnValue = YES;
+    sqlite3_stmt *addStmt = nil;
+    sqlite3 *dataBase = nil;
+    
+    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+    {
+        printf("\n Database Successfully Opened");
+    }
+    // Open the database. The database was prepared outside the application.
+    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        for (int i =0 ; i< arrData8.count-1; i++)
+        {
+            DataBO *objDetails = [arrData8 objectAtIndex:i ];
+            NSInteger rowidentifier = -1;
+            if(addStmt == nil)
+            {
+                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  advd (row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
+                const char *sql = [strValue UTF8String];
+                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
+                {
+                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
+                }
+            }
+            
+            if(rowidentifier == -1)
+            {
+                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                
+                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
+                {
+                    returnValue = NO;
+                }
+                if(SQLITE_DONE != sqlite3_step(addStmt))
+                {
+                    returnValue = NO;
+                }
+                
+                sqlite3_reset(addStmt);
+            }
+            
+            objDetails = nil;
+        }
+    }
+    
+    if (addStmt)
+    {
+        sqlite3_finalize(addStmt);
+        addStmt = nil;
+    }
+    sqlite3_close(dataBase);
+    dataBase = nil;
+    
+    return returnValue;
+}
+
 
 
 /*-(NSMutableArray *)getAllBookedServices;
@@ -504,7 +1120,7 @@
 	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
 	{
         
-        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM business "];
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM politics"];
         const char *DELETEsql = [strDeleteStmt UTF8String];
         
         if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
@@ -525,5 +1141,297 @@
 	}
 	return YES;
 }
+-(BOOL)deleteSelectedService1:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM society"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService2:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM business"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService3:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM art"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService4:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM sports"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService5:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM special"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService6:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM opinion"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService7:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM blog"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+-(BOOL)deleteSelectedService8:(DataBO *)objService
+{
+	sqlite3_stmt *deleteStmt = nil;
+	sqlite3 *selectDatabase = nil;
+	
+	
+	if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	{
+ 	}
+	// Open the database. The database was prepared outside the application.
+	
+	
+	if (sqlite3_open([strDBPath UTF8String], &selectDatabase) == SQLITE_OK)
+	{
+        
+        NSString *strDeleteStmt= [NSString stringWithFormat:@"DELETE FROM advd"];
+        const char *DELETEsql = [strDeleteStmt UTF8String];
+        
+        if(sqlite3_prepare_v2(selectDatabase, DELETEsql, -1, &deleteStmt, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Error while delete row preparing statement in tblBookedService. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        if(SQLITE_DONE != sqlite3_step(deleteStmt))
+        {
+            NSLog(@"Error while deleting into tblBookedService Row. '%s'", sqlite3_errmsg(selectDatabase));
+        }
+        
+        sqlite3_reset(deleteStmt);
+		
+		sqlite3_finalize(deleteStmt);
+		deleteStmt = nil;
+		sqlite3_close(selectDatabase);
+	}
+	return YES;
+}
+
+
+
+
 
 @end

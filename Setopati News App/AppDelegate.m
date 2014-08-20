@@ -48,7 +48,7 @@
     printf("\n ********documentsDirectory***** %s",[documentsDirectory UTF8String]);
     
     
-    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"Data.sqlite"];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"DataSetopati.sqlite"];
     
     printf("\n ****writableDBPath*** %s",[writableDBPath UTF8String]);
     
@@ -60,7 +60,7 @@
     }
     else
     {
-        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Data.sqlite"];
+        NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"DataSetopati.sqlite"];
         printf("\n defaultDBPath %s",[defaultDBPath UTF8String]);
         success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
     }
@@ -80,7 +80,7 @@
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Data.sqlite"];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"DataSetopati.sqlite"];
     
     if (sqlite3_open([path UTF8String], &database) == SQLITE_OK)
     {
@@ -98,7 +98,7 @@
 	NSMutableArray *setopatiList = [[NSMutableArray alloc]init];
     sqlite3_stmt* getStatement;
 	
-    const char* sql = "select * from business order by rowid asc limit 9";
+    const char* sql = "select * from politics order by rowid asc limit 9";
 	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
     {
         NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
@@ -136,7 +136,6 @@
             //  [stdObj release];
             
          }
-        
          while (sqlite3_step(getStatement) == SQLITE_ROW);
          printf("Successfully retrieved data from database");
     }
@@ -145,179 +144,414 @@
     
     return setopatiList;
 	}
-
-/*-(void)addServiceToDataBase:(NSMutableArray *)arrData
+-(NSMutableArray *)getSetopatisList1;
 {
-    
-    BOOL returnValue = YES;
-    sqlite3_stmt *addStmt = nil;
-    sqlite3 *dataBase = nil;
-    
-    if (sqlite3_config(SQLITE_CONFIG_SERIALIZED) == SQLITE_OK)
+	NSMutableArray *setopatiList1 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
+	
+    const char* sql = "select * from society order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
     {
-        printf("\n Database Successfully Opened");
+        NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
     }
-    // Open the database. The database was prepared outside the application.
-    if (sqlite3_open([strDBPath UTF8String], &dataBase) == SQLITE_OK)
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
     {
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
+		//return NO;
+    }
+    else{
         
-        for (int i=0 ; i< arrData.count-1; i++)
-        {
-            DataBO *objDetails = [arrData objectAtIndex:i ];
-            NSInteger rowidentifier = -1;
-            if(addStmt == nil)
-            {
-                NSString *strValue = [NSString stringWithFormat:@"INSERT INTO  politics(row_id,title,mixed_intro,author,body,image,place,news_date,lang,updt_tmstmp,link_href) Values (?,?,?,?,?,?,?,?,?,?,?)"];
-                const char *sql = [strValue UTF8String];
-                if(sqlite3_prepare_v2(dataBase, sql, -1, &addStmt, NULL) != SQLITE_OK)
-                {
-                    NSLog(@"Error while creating INSERT INTO tblSample statement. '%s'", sqlite3_errmsg(dataBase));
-                }
-            }
-            //}
-            if(rowidentifier == -1)
-            {
-                if(sqlite3_bind_text(addStmt, 1, [objDetails.strRowId UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                
-                if(sqlite3_bind_text(addStmt, 2, [objDetails.strTitle UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                
-                if(sqlite3_bind_text(addStmt, 3, [objDetails.strintro UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                
-                if(sqlite3_bind_text(addStmt, 4, [objDetails.strAuthor UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                if(sqlite3_bind_text(addStmt, 5, [objDetails.strBody UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                
-                if(sqlite3_bind_text(addStmt, 6, [objDetails.strImage UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                
-                if(sqlite3_bind_text(addStmt, 7, [objDetails.strplace UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                
-                if(sqlite3_bind_text(addStmt, 8, [objDetails.strnews_date UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                if(sqlite3_bind_text(addStmt, 9, [objDetails.strlang UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                if(sqlite3_bind_text(addStmt, 10, [objDetails.strTime UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                if(sqlite3_bind_text(addStmt, 11, [objDetails.strLink_href UTF8String], -1, SQLITE_TRANSIENT) != SQLITE_OK)
-                {
-                    returnValue = NO;
-                }
-                if(SQLITE_DONE != sqlite3_step(addStmt))
-                {
-                    returnValue = NO;
-                }
-                
-                sqlite3_reset(addStmt);
-            }
+        do {
             
-            objDetails = nil;
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList1 addObject:stdObj];
+            
+            //  [stdObj release];
+            
         }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
     }
+	
+    sqlite3_finalize(getStatement);
     
-    if (addStmt)
-    {
-        sqlite3_finalize(addStmt);
-        addStmt = nil;
-    }
-    sqlite3_close(dataBase);
-    dataBase = nil;
-    
-    //return returnValue;
+    return setopatiList1;
 }
-
-*/
-
-/*-(void)insertSetopati:(Setopati*)stdObj
+-(NSMutableArray *)getSetopatisList2;
 {
+	NSMutableArray *setopatiList2 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
 	
-    sqlite3_stmt* insertStatement;
-	
-    //const char* sql = "insert into politics(data) values (?)";
-    NSString *strValue = [NSString stringWithFormat:@"INSERT INTO politics(row_id,title,body,place) Values (?,?,?,?)"];
-    const char *sql = [strValue UTF8String];
- 
-	
-	
-    if (sqlite3_prepare_v2(database, sql, -1, &insertStatement, NULL) != SQLITE_OK)
+    const char* sql = "select * from business order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
     {
         NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
     }
-	   
-	
-   // sqlite3_bind_text(insertStatement, 1, [objectForKey.title UTF8String], -1, SQLITE_TRANSIENT);
-    //sqlite3_bind_text(insertStatement, 1, [stdObj.row_id UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertStatement, 2, [stdObj.title UTF8String], -2, SQLITE_TRANSIENT);
-     sqlite3_bind_text(insertStatement, 3, [stdObj.place UTF8String], -3, SQLITE_TRANSIENT);
-     sqlite3_bind_text(insertStatement, 4, [stdObj.body UTF8String], -4, SQLITE_TRANSIENT);
-    int success = sqlite3_step(insertStatement);
-    sqlite3_finalize(insertStatement);
-	 
-    if (success == SQLITE_ERROR)
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
     {
         NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
-	}
-    else
-    {
-		printf("\n Insertion Successful");
+		//return NO;
     }
-	}
-
--(void)insertSetopati1:(Setopati*)stdObj
-{
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList2 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
+    }
 	
-    sqlite3_stmt* insertStatement;
-	
-	NSString *sql = [NSString stringWithFormat:@"insert into politics(data) values ('%@')",stdObj.title];
+    sqlite3_finalize(getStatement);
     
-	NSLog(@"String is %@",sql);
+    return setopatiList2;
+}
+-(NSMutableArray *)getSetopatisList3;
+{
+	NSMutableArray *setopatiList3 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
 	
-	
-    if (sqlite3_prepare_v2(database, [sql UTF8String], -1, &insertStatement, NULL) != SQLITE_OK)
+    const char* sql = "select * from art order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
     {
         NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
     }
-	
-    sqlite3_bind_text(insertStatement, 2, [stdObj.data UTF8String], -1, SQLITE_TRANSIENT);
-	
-    int success = sqlite3_step(insertStatement);
-    sqlite3_finalize(insertStatement);
-    if (success == SQLITE_ERROR)
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
     {
         NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
-	}
-    else
-    {
-		printf("\n Insertion Successful");
+		//return NO;
+    }
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList3 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
     }
 	
-}*/
-
-
+    sqlite3_finalize(getStatement);
+    
+    return setopatiList3;
+}
+-(NSMutableArray *)getSetopatisList4;
+{
+	NSMutableArray *setopatiList4 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
+	
+    const char* sql = "select * from sports order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
+    {
+        NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
+    }
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
+    {
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
+		//return NO;
+    }
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList4 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
+    }
+	
+    sqlite3_finalize(getStatement);
+    
+    return setopatiList4;
+}
+-(NSMutableArray *)getSetopatisList5;
+{
+	NSMutableArray *setopatiList5 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
+	
+    const char* sql = "select * from special order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
+    {
+        NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
+    }
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
+    {
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
+		//return NO;
+    }
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList5 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
+    }
+	
+    sqlite3_finalize(getStatement);
+    
+    return setopatiList5;
+}
+-(NSMutableArray *)getSetopatisList6;
+{
+	NSMutableArray *setopatiList6 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
+	
+    const char* sql = "select * from opinion order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
+    {
+        NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
+    }
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
+    {
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
+		//return NO;
+    }
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList6 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
+    }
+	
+    sqlite3_finalize(getStatement);
+    
+    return setopatiList6;
+}
+-(NSMutableArray *)getSetopatisList7;
+{
+	NSMutableArray *setopatiList7 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
+	
+    const char* sql = "select * from blog order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
+    {
+        NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
+    }
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
+    {
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
+		//return NO;
+    }
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList7 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
+    }
+	
+    sqlite3_finalize(getStatement);
+    
+    return setopatiList7;
+}
+-(NSMutableArray *)getSetopatisList8;
+{
+	NSMutableArray *setopatiList8 = [[NSMutableArray alloc]init];
+    sqlite3_stmt* getStatement;
+	
+    const char* sql = "select * from POLITICS order by rowid asc limit 9";
+	if (sqlite3_prepare_v2(database, sql, -1, &getStatement, NULL) != SQLITE_OK)
+    {
+        NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(database));
+    }
+	if (sqlite3_step(getStatement) == SQLITE_ERROR)
+    {
+        NSAssert1(0, @"Error: failed to insert into the database with message '%s'.", sqlite3_errmsg(database));
+		//return NO;
+    }
+    else{
+        
+        do {
+            
+            Setopati *stdObj = [[Setopati alloc]init];
+            
+            stdObj.row_id=sqlite3_column_int(getStatement, 0);
+            printf("Setopati row_id is %d",sqlite3_column_int(getStatement, 0));
+            
+            stdObj.title = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 1)];
+            printf("\nSetopati Title is %s",[stdObj.title
+                                             UTF8String]);
+            
+            stdObj.mixed_intro = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 2)];
+            printf("\nSetopati mixed_intro is %s",[stdObj.mixed_intro UTF8String]);
+            
+            stdObj.body = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 4)];
+            printf("\nSetopati Body is %s",[stdObj.body UTF8String]);
+            stdObj.image = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 5)];
+            printf("\nSetopati image is %s",[stdObj.place UTF8String]);
+            stdObj.place = [NSString stringWithUTF8String:(char*)sqlite3_column_text(getStatement, 6)];
+            printf("\nSetopati Place is %s",[stdObj.place UTF8String]);
+            
+            [setopatiList8 addObject:stdObj];
+            
+            //  [stdObj release];
+            
+        }
+        while (sqlite3_step(getStatement) == SQLITE_ROW);
+        printf("Successfully retrieved data from database");
+    }
+	
+    sqlite3_finalize(getStatement);
+    
+    return setopatiList8;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
