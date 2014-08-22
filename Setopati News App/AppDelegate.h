@@ -28,6 +28,15 @@
 -(NSMutableArray *)getSetopatisList7;
 -(NSMutableArray *)getSetopatisList8;
 //-(void)insertSetopati:(Setopati*)sObj;
+-(NSMutableArray *)ngetSetopatisList;
+-(NSMutableArray *)ngetSetopatisList1;
+-(NSMutableArray *)ngetSetopatisList2;
+-(NSMutableArray *)ngetSetopatisList3;
+-(NSMutableArray *)ngetSetopatisList4;
+-(NSMutableArray *)ngetSetopatisList5;
+-(NSMutableArray *)ngetSetopatisList6;
+-(NSMutableArray *)ngetSetopatisList7;
+-(NSMutableArray *)ngetSetopatisList8;
 //-(void)insertSetopati1:(Setopati*)sObj;
 //-(void)addServiceToDataBase:(NSMutableArray *)arrData;
 

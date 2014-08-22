@@ -19,7 +19,6 @@
 		B64AD67E19A5054F002E0153 /* BlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD67D19A5054F002E0153 /* BlogViewController.m */; };
 		B64AD68119A50570002E0153 /* AdvdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD68019A50570002E0153 /* AdvdViewController.m */; };
 		B64AD68419A50680002E0153 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AD68319A50680002E0153 /* HomeViewController.m */; };
-		B64AD68619A50F56002E0153 /* DataSetopati.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B64AD68519A50F56002E0153 /* DataSetopati.sqlite */; };
 		B64D645A197D328A00BCF719 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64D6459197D328A00BCF719 /* Foundation.framework */; };
 		B64D645C197D328A00BCF719 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64D645B197D328A00BCF719 /* CoreGraphics.framework */; };
 		B64D645E197D328A00BCF719 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64D645D197D328A00BCF719 /* UIKit.framework */; };
@@ -39,7 +38,20 @@
 		B64D6495197D331800BCF719 /* Setopati.m in Sources */ = {isa = PBXBuildFile; fileRef = B64D6494197D331800BCF719 /* Setopati.m */; };
 		B64D64A5197D705900BCF719 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64D64A3197D705900BCF719 /* DetailsViewController.m */; };
 		B64D64A6197D705900BCF719 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64D64A4197D705900BCF719 /* DetailsViewController.xib */; };
+		B65814E519A7462A004F17FD /* NPoliticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814E419A7462A004F17FD /* NPoliticsViewController.m */; };
+		B65814E819A74641004F17FD /* NSocietyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814E719A74641004F17FD /* NSocietyViewController.m */; };
+		B65814EB19A74932004F17FD /* NBusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814EA19A74932004F17FD /* NBusinessViewController.m */; };
+		B65814EE19A7494A004F17FD /* NArtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814ED19A7494A004F17FD /* NArtViewController.m */; };
+		B65814F119A7496B004F17FD /* NSportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814F019A7496B004F17FD /* NSportsViewController.m */; };
+		B65814F419A7497D004F17FD /* NSpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814F319A7497D004F17FD /* NSpecialViewController.m */; };
+		B65814F719A74995004F17FD /* NOpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814F619A74995004F17FD /* NOpinionViewController.m */; };
+		B65814FA19A749A9004F17FD /* NBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814F919A749A9004F17FD /* NBlogViewController.m */; };
+		B65814FD19A749FB004F17FD /* NLiteratureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65814FC19A749FB004F17FD /* NLiteratureViewController.m */; };
+		B65814FF19A7562A004F17FD /* SetopatiData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B65814FE19A7562A004F17FD /* SetopatiData.sqlite */; };
 		B65B3E3A19A3524C004C8716 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65B3E3919A3524C004C8716 /* BusinessViewController.m */; };
+		B67D27EB19A5FA60006801E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67D27EA19A5FA60006801E0 /* SystemConfiguration.framework */; };
+		B67D27ED19A5FFFD006801E0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67D27EC19A5FFFD006801E0 /* CFNetwork.framework */; };
+		B67D27F019A6101A006801E0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B67D27EF19A6101A006801E0 /* Reachability.m */; };
 		B6AECE4A19A1E301009330DB /* SocietyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AECE4919A1E301009330DB /* SocietyViewController.m */; };
 		B6BCCA07199B45FF001F1D45 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6BCCA06199B45FF001F1D45 /* icon.png */; };
 		B6BCCA70199B4DBC001F1D45 /* PoliticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCCA6F199B4DBC001F1D45 /* PoliticsViewController.m */; };
@@ -79,7 +91,6 @@
 		B64AD68019A50570002E0153 /* AdvdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvdViewController.m; sourceTree = "<group>"; };
 		B64AD68219A50680002E0153 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B64AD68319A50680002E0153 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		B64AD68519A50F56002E0153 /* DataSetopati.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DataSetopati.sqlite; sourceTree = "<group>"; };
 		B64D6456197D328A00BCF719 /* Setopati News App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Setopati News App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64D6459197D328A00BCF719 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B64D645B197D328A00BCF719 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,8 +117,31 @@
 		B64D64A2197D705900BCF719 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		B64D64A3197D705900BCF719 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		B64D64A4197D705900BCF719 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		B65814E319A7462A004F17FD /* NPoliticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPoliticsViewController.h; sourceTree = "<group>"; };
+		B65814E419A7462A004F17FD /* NPoliticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPoliticsViewController.m; sourceTree = "<group>"; };
+		B65814E619A74641004F17FD /* NSocietyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSocietyViewController.h; sourceTree = "<group>"; };
+		B65814E719A74641004F17FD /* NSocietyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSocietyViewController.m; sourceTree = "<group>"; };
+		B65814E919A74932004F17FD /* NBusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBusinessViewController.h; sourceTree = "<group>"; };
+		B65814EA19A74932004F17FD /* NBusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBusinessViewController.m; sourceTree = "<group>"; };
+		B65814EC19A7494A004F17FD /* NArtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NArtViewController.h; sourceTree = "<group>"; };
+		B65814ED19A7494A004F17FD /* NArtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NArtViewController.m; sourceTree = "<group>"; };
+		B65814EF19A7496B004F17FD /* NSportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSportsViewController.h; sourceTree = "<group>"; };
+		B65814F019A7496B004F17FD /* NSportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSportsViewController.m; sourceTree = "<group>"; };
+		B65814F219A7497D004F17FD /* NSpecialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSpecialViewController.h; sourceTree = "<group>"; };
+		B65814F319A7497D004F17FD /* NSpecialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSpecialViewController.m; sourceTree = "<group>"; };
+		B65814F519A74995004F17FD /* NOpinionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOpinionViewController.h; sourceTree = "<group>"; };
+		B65814F619A74995004F17FD /* NOpinionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOpinionViewController.m; sourceTree = "<group>"; };
+		B65814F819A749A9004F17FD /* NBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBlogViewController.h; sourceTree = "<group>"; };
+		B65814F919A749A9004F17FD /* NBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBlogViewController.m; sourceTree = "<group>"; };
+		B65814FB19A749FB004F17FD /* NLiteratureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLiteratureViewController.h; sourceTree = "<group>"; };
+		B65814FC19A749FB004F17FD /* NLiteratureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLiteratureViewController.m; sourceTree = "<group>"; };
+		B65814FE19A7562A004F17FD /* SetopatiData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetopatiData.sqlite; sourceTree = "<group>"; };
 		B65B3E3819A3524C004C8716 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
 		B65B3E3919A3524C004C8716 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
+		B67D27EA19A5FA60006801E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B67D27EC19A5FFFD006801E0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B67D27EE19A6101A006801E0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		B67D27EF19A6101A006801E0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B6AECE4819A1E301009330DB /* SocietyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocietyViewController.h; sourceTree = "<group>"; };
 		B6AECE4919A1E301009330DB /* SocietyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocietyViewController.m; sourceTree = "<group>"; };
 		B6BCCA06199B45FF001F1D45 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -122,6 +156,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67D27ED19A5FFFD006801E0 /* CFNetwork.framework in Frameworks */,
+				B67D27EB19A5FA60006801E0 /* SystemConfiguration.framework in Frameworks */,
 				B64D6492197D32B000BCF719 /* libsqlite3.0.dylib in Frameworks */,
 				B64D645C197D328A00BCF719 /* CoreGraphics.framework in Frameworks */,
 				B64D645E197D328A00BCF719 /* UIKit.framework in Frameworks */,
@@ -145,7 +181,9 @@
 		B64D644D197D328A00BCF719 = {
 			isa = PBXGroup;
 			children = (
-				B64AD68519A50F56002E0153 /* DataSetopati.sqlite */,
+				B65814FE19A7562A004F17FD /* SetopatiData.sqlite */,
+				B67D27EE19A6101A006801E0 /* Reachability.h */,
+				B67D27EF19A6101A006801E0 /* Reachability.m */,
 				B64D645F197D328A00BCF719 /* Setopati News App */,
 				B64D6481197D328B00BCF719 /* Setopati News AppTests */,
 				B64D6458197D328A00BCF719 /* Frameworks */,
@@ -165,6 +203,8 @@
 		B64D6458197D328A00BCF719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B67D27EC19A5FFFD006801E0 /* CFNetwork.framework */,
+				B67D27EA19A5FA60006801E0 /* SystemConfiguration.framework */,
 				B64D6491197D32B000BCF719 /* libsqlite3.0.dylib */,
 				B64D6459197D328A00BCF719 /* Foundation.framework */,
 				B64D645B197D328A00BCF719 /* CoreGraphics.framework */,
@@ -203,6 +243,24 @@
 				B64AD67D19A5054F002E0153 /* BlogViewController.m */,
 				B64AD67F19A50570002E0153 /* AdvdViewController.h */,
 				B64AD68019A50570002E0153 /* AdvdViewController.m */,
+				B65814E319A7462A004F17FD /* NPoliticsViewController.h */,
+				B65814E419A7462A004F17FD /* NPoliticsViewController.m */,
+				B65814E619A74641004F17FD /* NSocietyViewController.h */,
+				B65814E719A74641004F17FD /* NSocietyViewController.m */,
+				B65814E919A74932004F17FD /* NBusinessViewController.h */,
+				B65814EA19A74932004F17FD /* NBusinessViewController.m */,
+				B65814EC19A7494A004F17FD /* NArtViewController.h */,
+				B65814ED19A7494A004F17FD /* NArtViewController.m */,
+				B65814EF19A7496B004F17FD /* NSportsViewController.h */,
+				B65814F019A7496B004F17FD /* NSportsViewController.m */,
+				B65814F219A7497D004F17FD /* NSpecialViewController.h */,
+				B65814F319A7497D004F17FD /* NSpecialViewController.m */,
+				B65814F519A74995004F17FD /* NOpinionViewController.h */,
+				B65814F619A74995004F17FD /* NOpinionViewController.m */,
+				B65814F819A749A9004F17FD /* NBlogViewController.h */,
+				B65814F919A749A9004F17FD /* NBlogViewController.m */,
+				B65814FB19A749FB004F17FD /* NLiteratureViewController.h */,
+				B65814FC19A749FB004F17FD /* NLiteratureViewController.m */,
 				B64D64A2197D705900BCF719 /* DetailsViewController.h */,
 				B64D64A3197D705900BCF719 /* DetailsViewController.m */,
 				B64D64A4197D705900BCF719 /* DetailsViewController.xib */,
@@ -336,7 +394,7 @@
 				B64D6470197D328A00BCF719 /* Main_iPad.storyboard in Resources */,
 				B64D6475197D328B00BCF719 /* Images.xcassets in Resources */,
 				B64D646D197D328A00BCF719 /* Main_iPhone.storyboard in Resources */,
-				B64AD68619A50F56002E0153 /* DataSetopati.sqlite in Resources */,
+				B65814FF19A7562A004F17FD /* SetopatiData.sqlite in Resources */,
 				B626671D1998C25B00F65CDE /* t1.png in Resources */,
 				B64D6464197D328A00BCF719 /* InfoPlist.strings in Resources */,
 			);
@@ -360,22 +418,32 @@
 				B62667261998C9D900F65CDE /* DataBO.m in Sources */,
 				B64D6473197D328B00BCF719 /* ViewController.m in Sources */,
 				B64D646A197D328A00BCF719 /* AppDelegate.m in Sources */,
+				B65814F119A7496B004F17FD /* NSportsViewController.m in Sources */,
 				B64AD67819A504DD002E0153 /* SpecialViewController.m in Sources */,
+				B65814F419A7497D004F17FD /* NSpecialViewController.m in Sources */,
 				B64AD67519A504A7002E0153 /* SportsViewController.m in Sources */,
 				B64D64A5197D705900BCF719 /* DetailsViewController.m in Sources */,
+				B65814E819A74641004F17FD /* NSocietyViewController.m in Sources */,
 				B64D6495197D331800BCF719 /* Setopati.m in Sources */,
+				B65814FD19A749FB004F17FD /* NLiteratureViewController.m in Sources */,
 				B6BCCA70199B4DBC001F1D45 /* PoliticsViewController.m in Sources */,
 				B65B3E3A19A3524C004C8716 /* BusinessViewController.m in Sources */,
 				B64AD68119A50570002E0153 /* AdvdViewController.m in Sources */,
+				B65814FA19A749A9004F17FD /* NBlogViewController.m in Sources */,
+				B65814F719A74995004F17FD /* NOpinionViewController.m in Sources */,
+				B65814EE19A7494A004F17FD /* NArtViewController.m in Sources */,
 				B6AECE4A19A1E301009330DB /* SocietyViewController.m in Sources */,
+				B65814E519A7462A004F17FD /* NPoliticsViewController.m in Sources */,
 				B6BCCA76199B91B9001F1D45 /* NSDataAdditions.m in Sources */,
 				B64AD67E19A5054F002E0153 /* BlogViewController.m in Sources */,
 				B62667251998C9D900F65CDE /* DataBaseManger.m in Sources */,
+				B67D27F019A6101A006801E0 /* Reachability.m in Sources */,
 				B62667271998C9D900F65CDE /* DataParser.m in Sources */,
 				B64AD67B19A5053C002E0153 /* OpinionViewController.m in Sources */,
 				B64D6466197D328A00BCF719 /* main.m in Sources */,
 				B64AD68419A50680002E0153 /* HomeViewController.m in Sources */,
 				B64AD67219A50494002E0153 /* ArtViewController.m in Sources */,
+				B65814EB19A74932004F17FD /* NBusinessViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

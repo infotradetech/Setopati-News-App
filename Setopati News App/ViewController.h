@@ -11,13 +11,20 @@
 #import "AppDelegate.h"
 #import "DetailsViewController.h"
 #import <sqlite3.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
+#import "NPoliticsViewController.h"
 
 
 @interface ViewController : UIViewController
 {
     Setopati *stdObj;
     sqlite3 *database;
+    
 }
 @property(strong, nonatomic) Setopati *stdObj;
+
+
+
 @end
  

@@ -1,55 +1,54 @@
 //
-//  AdvdViewController.m
+//  NSocietyViewController.m
 //  Setopati News App
 //
-//  Created by InfoTrade Tech on 8/20/14.
+//  Created by InfoTrade Tech on 8/22/14.
 //  Copyright (c) 2014 infotradetech. All rights reserved.
 //
 
-#import "AdvdViewController.h"
+#import "NSocietyViewController.h"
 #import "DataBO.h"
 #import "DataBaseManger.h"
 #import "DataParser.h"
 
-@interface AdvdViewController ()
+@interface NSocietyViewController ()
 {
-    //NSData *data;
+    // NSMutableArray *setopatiList;
     NSArray *setopatiList;
     UITextField *aTextField;
-    
 }
 @end
 
-@implementation AdvdViewController
+@implementation NSocietyViewController
 @synthesize aTableView;
 @synthesize bTableView;
 @synthesize stdObj;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title=@"NEWS";
-        aTableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]bounds] style:UITableViewStylePlain];
-        aTableView.rowHeight=50;
-        aTableView.separatorColor=[UIColor grayColor];
-        aTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
-        aTableView.delegate=self;
-        aTableView.dataSource=self;
-        [self.view addSubview:aTableView];
-        
-        UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(barAction)];
-        self.navigationItem.rightBarButtonItem=leftBarItem;
-    }
-    return self;
+        self.title=@"समाचार";
+        // Custom initialization
+    aTableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]bounds] style:UITableViewStylePlain];
+    aTableView.rowHeight=50;
+    aTableView.separatorColor=[UIColor grayColor];
+    aTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+    aTableView.delegate=self;
+    aTableView.dataSource=self;
+    [self.view addSubview:aTableView];
+    
+    UIBarButtonItem *righttBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(barAction)];
+    self.navigationItem.rightBarButtonItem=righttBarItem;
 }
-
+return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    arryData = [[NSArray alloc] initWithObjects:@"HEADLINE",@"POLITICS",@"SOCIETY",@"BUSINESS",@"ART",@"SPORTS",
-                @"SPECIAL",@"OPINION",@"BLOG",@"AUDIO/VIDEO",@"ABOUT US",nil];
+    arryData = [[NSArray alloc] initWithObjects:@"मुख्य समाचार",@"राजनीति",@"समाज",@"बजार",@"कला",@"खेल",
+                @"विशेष",@"बिचार",@"ब्लग",@"साहित्यपाटी",@"हाम्रो बारेमा",nil];
     flag=1;
     bTableView.hidden=YES;
     // btn.layer.cornerRadius=20;
@@ -57,7 +56,9 @@
     
     stdObj=[[Setopati alloc]init];
     AppDelegate *app=[[UIApplication sharedApplication]delegate];
-    setopatiList=[app getSetopatisList8];
+    setopatiList=[app ngetSetopatisList1];
+    
+    
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -107,8 +108,8 @@
     {
         if(indexPath.row==0)
         {
-            stdObj=[setopatiList objectAtIndex:indexPath.row];
-            cell.textLabel.text = @"AUDIO/VIDEO";
+            //stdObj=[setopatiList objectAtIndex:indexPath.row];
+            cell.textLabel.text = @"समाज";
             cell.textLabel.textColor=[UIColor whiteColor];
             cell.backgroundColor=[UIColor colorWithRed:22/255.0f green:124/255.0f blue:105/255.0f alpha:1.0f];
             cell.textLabel.font=[UIFont fontWithName:@"Arial" size:20];
@@ -250,67 +251,65 @@
         }
         if(indexPath.row==1)
         {
-            PoliticsViewController *dvc = [[PoliticsViewController alloc]init];
+            NPoliticsViewController *dvc = [[NPoliticsViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==2)
         {
-            SocietyViewController *dvc = [[SocietyViewController alloc]init];
+            NSocietyViewController *dvc = [[NSocietyViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==3)
         {
-            BusinessViewController *dvc = [[BusinessViewController alloc]init];
+            NBusinessViewController *dvc = [[NBusinessViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==4)
         {
-            ArtViewController *dvc = [[ArtViewController alloc]init];
+            NArtViewController *dvc = [[NArtViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==5)
         {
-            SportsViewController *dvc = [[SportsViewController alloc]init];
+            NSportsViewController *dvc = [[NSportsViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==6)
         {
-            SpecialViewController *dvc = [[SpecialViewController alloc]init];
+            NSpecialViewController *dvc = [[NSpecialViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==7)
         {
-            OpinionViewController *dvc = [[OpinionViewController alloc]init];
+            NOpinionViewController *dvc = [[NOpinionViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }if(indexPath.row==8)
         {
-            BlogViewController *dvc = [[BlogViewController alloc]init];
+            NBlogViewController *dvc = [[NBlogViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
             
         }
         if(indexPath.row==9)
         {
-            AdvdViewController *dvc = [[AdvdViewController alloc]init];
+            NLiteratureViewController *dvc = [[NLiteratureViewController alloc]init];
             //dvc.jsonDictionary=[jsonArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:dvc animated:YES];
-            
         }
-        
     }
     if (tableView == self.aTableView)
     {
@@ -336,14 +335,13 @@
         {
             DetailsViewController *fvc = [[DetailsViewController alloc]init];
             fvc.stdObj=[setopatiList objectAtIndex:indexPath.row];
-            [self.navigationController pushViewController:fvc animated:YES];        }
-        
+            [self.navigationController pushViewController:fvc animated:YES];
+        }
         if(indexPath.row==4)
         {
             DetailsViewController *fvc = [[DetailsViewController alloc]init];
             fvc.stdObj=[setopatiList objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:fvc animated:YES];
-            
         }
         if(indexPath.row==5)
         {
@@ -352,7 +350,6 @@
             [self.navigationController pushViewController:fvc animated:YES];
             
         }
-        
         if(indexPath.row==6)
         {
             DetailsViewController *fvc = [[DetailsViewController alloc]init];
@@ -405,7 +402,6 @@
         bTableView.hidden=YES;
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {

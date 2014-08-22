@@ -38,9 +38,9 @@
         aTableView.dataSource=self;
         [self.view addSubview:aTableView];
         
-        UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(barAction)];
-        self.navigationItem.rightBarButtonItem=leftBarItem;
-}
+        UIBarButtonItem *righttBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(barAction)];
+        self.navigationItem.rightBarButtonItem=righttBarItem;
+           }
     return self;
 }
 - (void)viewDidLoad
@@ -56,6 +56,9 @@
     stdObj=[[Setopati alloc]init];
     AppDelegate *app=[[UIApplication sharedApplication]delegate];
     setopatiList=[app getSetopatisList];
+    
+    
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -104,7 +107,7 @@
     {
         if(indexPath.row==0)
         {
-            stdObj=[setopatiList objectAtIndex:indexPath.row];
+            //stdObj=[setopatiList objectAtIndex:indexPath.row];
             cell.textLabel.text = @"POLITICS";
             cell.textLabel.textColor=[UIColor whiteColor];
             cell.backgroundColor=[UIColor colorWithRed:22/255.0f green:124/255.0f blue:105/255.0f alpha:1.0f];
@@ -333,7 +336,8 @@
         {
             DetailsViewController *fvc = [[DetailsViewController alloc]init];
             fvc.stdObj=[setopatiList objectAtIndex:indexPath.row];
-            [self.navigationController pushViewController:fvc animated:YES];        }
+            [self.navigationController pushViewController:fvc animated:YES];
+        }
         
         if(indexPath.row==4)
         {
@@ -349,7 +353,6 @@
             [self.navigationController pushViewController:fvc animated:YES];
             
         }
-        
         if(indexPath.row==6)
         {
             DetailsViewController *fvc = [[DetailsViewController alloc]init];
@@ -394,7 +397,7 @@
     bTableView.delegate=self;
     bTableView.dataSource=self;
     [self.view addSubview:bTableView];
-    }
+}
     else
     {
         flag=1;

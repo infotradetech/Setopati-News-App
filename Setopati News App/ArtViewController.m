@@ -32,7 +32,7 @@
     if (self) {
         // Custom initialization
         self.title=@"NEWS";
-        // Custom initialization
+
         aTableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]bounds] style:UITableViewStylePlain];
         aTableView.rowHeight=50;
         aTableView.separatorColor=[UIColor grayColor];

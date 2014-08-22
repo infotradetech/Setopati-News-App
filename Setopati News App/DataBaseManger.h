@@ -26,6 +26,16 @@
 -(BOOL)addServiceToDataBase7:(NSMutableArray *)arrData7;
 -(BOOL)addServiceToDataBase8:(NSMutableArray *)arrData8;
 //-(NSMutableArray *)getAllBookedServices;
+-(BOOL)naddServiceToDataBase:(NSMutableArray *)narrData;
+-(BOOL)naddServiceToDataBase1:(NSMutableArray *)narrData1;
+-(BOOL)naddServiceToDataBase2:(NSMutableArray *)narrData2;
+-(BOOL)naddServiceToDataBase3:(NSMutableArray *)narrData3;
+-(BOOL)naddServiceToDataBase4:(NSMutableArray *)narrData4;
+-(BOOL)naddServiceToDataBase5:(NSMutableArray *)narrData5;
+-(BOOL)naddServiceToDataBase6:(NSMutableArray *)narrData6;
+-(BOOL)naddServiceToDataBase7:(NSMutableArray *)narrData7;
+-(BOOL)naddServiceToDataBase8:(NSMutableArray *)narrData8;
+
 //-(BOOL)SelectedService:(NSMutableArray *)getAllBookedServices;
 -(BOOL)deleteSelectedService:(DataBO *)objService;
 -(BOOL)deleteSelectedService1:(DataBO *)objService;
@@ -37,5 +47,14 @@
 -(BOOL)deleteSelectedService7:(DataBO *)objService;
 -(BOOL)deleteSelectedService8:(DataBO *)objService;
 
-
+//-(BOOL)ndeleteSelectedService:(DataBO *)nobjService;
+-(BOOL)ndeleteSelectedService:(DataBO *)nobjService;
+-(BOOL)ndeleteSelectedService1:(DataBO *)nobjService1;
+-(BOOL)ndeleteSelectedService2:(DataBO *)nobjService2;
+-(BOOL)ndeleteSelectedService3:(DataBO *)nobjService3;
+-(BOOL)ndeleteSelectedService4:(DataBO *)nobjService4;
+-(BOOL)ndeleteSelectedService5:(DataBO *)nobjService5;
+-(BOOL)ndeleteSelectedService6:(DataBO *)nobjService6;
+-(BOOL)ndeleteSelectedService7:(DataBO *)nobjService7;
+-(BOOL)ndeleteSelectedService8:(DataBO *)nobjService8;
 @end
